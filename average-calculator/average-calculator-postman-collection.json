@@ -1,0 +1,145 @@
+{
+    "info": {
+      "_postman_id": "e8f5a123-4b56-7c89-0d12-3e456f789a01",
+      "name": "Average Calculator API Tests",
+      "description": "Tests for the Average Calculator HTTP Microservice",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Get Even Numbers",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:9876/numbers/e",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "9876",
+            "path": [
+              "numbers",
+              "e"
+            ]
+          },
+          "description": "Fetch even numbers and get the window state and average"
+        },
+        "response": []
+      },
+      {
+        "name": "Get Prime Numbers",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:9876/numbers/p",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "9876",
+            "path": [
+              "numbers",
+              "p"
+            ]
+          },
+          "description": "Fetch prime numbers and get the window state and average"
+        },
+        "response": []
+      },
+      {
+        "name": "Get Fibonacci Numbers",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:9876/numbers/f",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "9876",
+            "path": [
+              "numbers",
+              "f"
+            ]
+          },
+          "description": "Fetch Fibonacci numbers and get the window state and average"
+        },
+        "response": []
+      },
+      {
+        "name": "Get Random Numbers",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:9876/numbers/r",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "9876",
+            "path": [
+              "numbers",
+              "r"
+            ]
+          },
+          "description": "Fetch random numbers and get the window state and average"
+        },
+        "response": []
+      },
+      {
+        "name": "Invalid Number Type",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:9876/numbers/x",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "9876",
+            "path": [
+              "numbers",
+              "x"
+            ]
+          },
+          "description": "Test with an invalid number type"
+        },
+        "response": []
+      }
+    ],
+    "event": [
+      {
+        "listen": "prerequest",
+        "script": {
+          "type": "text/javascript",
+          "exec": [
+            ""
+          ]
+        }
+      },
+      {
+        "listen": "test",
+        "script": {
+          "type": "text/javascript",
+          "exec": [
+            "pm.test(\"Status code is 200\", function () {",
+            "    pm.response.to.have.status(200);",
+            "});",
+            "",
+            "pm.test(\"Response contains expected keys\", function () {",
+            "    const responseData = pm.response.json();",
+            "    pm.expect(responseData).to.have.property('windowPrevState');",
+            "    pm.expect(responseData).to.have.property('windowCurrState');",
+            "    pm.expect(responseData).to.have.property('numbers');",
+            "    pm.expect(responseData).to.have.property('avg');",
+            "});"
+          ]
+        }
+      }
+    ]
+  }
